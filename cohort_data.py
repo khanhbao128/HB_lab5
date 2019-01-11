@@ -108,7 +108,40 @@ def hogwarts_by_house(filename):
     ghosts = []
     instructors = []
 
-    # Code goes here
+    data = open(filename)
+
+    for line in data:
+        student_info = line.split("|")
+        last_name = student_info[1]
+        cohort = student_info[4]
+        house = student_info[2]
+        if "G" in cohort:
+            ghosts.append(last_name)
+        elif "I" in cohort:
+            instructors.append(last_name)
+        else:
+            if "gryffindor" in house.lower():
+                gryffindor.append(last_name)
+            elif "hufflepuff" in house.lower():
+                hufflepuff.append(last_name)
+            elif "slytherin" in house.lower():
+                slytherin.append(last_name)
+            elif "ravenclaw" in house.lower():
+                ravenclaw.append(last_name)
+            elif "dumbl" in house.lower():
+                dumbledores_army.append(last_name)
+
+    all_hogwarts.append(sorted(dumbledores_army))
+    all_hogwarts.append(sorted(gryffindor))
+    all_hogwarts.append(sorted(hufflepuff))
+    all_hogwarts.append(sorted(ravenclaw))
+    all_hogwarts.append(sorted(slytherin))
+
+    all_hogwarts.append(sorted(ghosts))
+    all_hogwarts.append(sorted(instructors))
+
+
+
 
     return all_hogwarts
 

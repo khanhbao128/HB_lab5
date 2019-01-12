@@ -222,10 +222,45 @@ def find_name_duplicates(filename):
 
     """
 
-    duplicate_names = set()
+    
+    fall = set()
+    winter = set()
+    spring = set()
+    summer = set()
 
-    # Code goes here
+    all_students_data = all_students_tuple_list(filename)
+    print(all_students_data)
 
+
+    for student_tuple in all_students_data:
+        name = student_tuple[0]
+        lastname = name.split()[1]
+
+        cohort = student_tuple[3]
+
+
+        print(lastname, cohort)
+
+        if "Fall" in cohort:
+            fall.add(lastname)
+
+        elif "Winter" in cohort:
+            winter.add(lastname)
+
+        elif "Spring" in cohort:
+            spring.add(lastname)
+
+        elif "Summer" in cohort:
+            summer.add(lastname)
+
+    print("Fall " + str(fall))
+    print("Winter " + str(winter))
+    print("Spring " + str(spring))
+    print("Summer " + str(summer))
+
+    duplicate_names = fall & winter & spring & summer
+
+    print("Dup names " + str(duplicate_names))
     return duplicate_names
 
 
@@ -264,10 +299,9 @@ def find_house_members_by_student_name(student_list):
 # Here is some useful code to run these functions without doctests!
 all_students_data = all_students_tuple_list("cohort_data.txt")
 
-print(find_cohort_by_student_name(all_students_data))
+#  print(find_cohort_by_student_name(all_students_data))
 
-
-#find_house_members_by_student_name(all_students_data)
+# print(find_house_members_by_student_name(all_students_data))
 
 
 ##############################################################################

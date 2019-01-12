@@ -221,25 +221,18 @@ def find_name_duplicates(filename):
     {'Weasley'}
 
     """
-
     
     fall = set()
     winter = set()
     spring = set()
     summer = set()
-
     all_students_data = all_students_tuple_list(filename)
-    print(all_students_data)
-
 
     for student_tuple in all_students_data:
         name = student_tuple[0]
         lastname = name.split()[1]
 
         cohort = student_tuple[3]
-
-
-        print(lastname, cohort)
 
         if "Fall" in cohort:
             fall.add(lastname)
@@ -253,14 +246,7 @@ def find_name_duplicates(filename):
         elif "Summer" in cohort:
             summer.add(lastname)
 
-    print("Fall " + str(fall))
-    print("Winter " + str(winter))
-    print("Spring " + str(spring))
-    print("Summer " + str(summer))
-
     duplicate_names = fall & winter & spring & summer
-
-    print("Dup names " + str(duplicate_names))
     return duplicate_names
 
 
